@@ -1,0 +1,57 @@
+# some "NAs" don't mean 'missing'. convert them to something more meaningful
+all_data.loc[:, "Alley"] = all_data.loc[:, "Alley"].fillna("None")
+all_data.loc[:, "BsmtQual"] = all_data.loc[:, "BsmtQual"].fillna("None")
+all_data.loc[:, "BsmtCond"] = all_data.loc[:, "BsmtCond"].fillna("None")
+all_data.loc[:, "BsmtExposure"] = all_data.loc[:, "BsmtExposure"].fillna("None")
+all_data.loc[:, "BsmtFinType1"] = all_data.loc[:, "BsmtFinType1"].fillna("None")
+all_data.loc[:, "BsmtFinType2"] = all_data.loc[:, "BsmtFinType2"].fillna("None")
+all_data.loc[:, "FireplaceQu"] = all_data.loc[:, "FireplaceQu"].fillna("None")
+all_data.loc[:, "GarageType"] = all_data.loc[:, "GarageType"].fillna("None") //
+all_data.loc[:, "GarageFinish"] = all_data.loc[:, "GarageFinish"].fillna("None") // 
+all_data.loc[:, "GarageQual"] = all_data.loc[:, "GarageQual"].fillna("None")
+all_data.loc[:,'GarageCond']= all_data.loc[:, "GarageCond"].fillna("None")
+all_data.loc[:,'PoolQC']= all_data.loc[:, "PoolQC"].fillna("None")
+all_data.loc[:,'Fence']= all_data.loc[:, "Fence"].fillna("None")
+all_data.loc[:, "MiscFeature"] = all_data.loc[:, "MiscFeature"].fillna("None")
+
+
+print ("A: Agriculture\n 
+
+	C: Commercial \n 
+	FV: Floating Village Residential\n 
+	I: Industrial\n 
+	RH: Residential High Density\n 
+	RL: Residential Low Density\n
+        RP: Residential Low Density Park\n
+        RM: Residential Medium Density\n")
+
+
+print ("A: Agriculture\n C: Commercial \n FV: Floating Village Residential\n I: Industrial\n RH: Residential High Density\n RL: Residential Low Density\n RP: Residential Low Density Park\n
+        RM: Residential Medium Density\n")
+
+
+mp.rcParams['figure.figsize'] = (10, 5.0)
+
+# sort neighborhoods by median sales price
+grouped = train['SalePrice'].groupby(train["Neighborhood"]).median()
+neighborhoods = np.unique(train.Neighborhood)
+sortedindices = np.argsort(DataFrame.as_matrix(grouped))
+topfive = neighborhoods[sortedindices[-5::]]
+bottomfive = neighborhoods[sortedindices[0:5]]
+print (topfive, bottomfive)
+
+#present = str(X_train['Neighborhood']) in topfive
+#print (present)
+temp = []
+temp2 = []
+for i in range(0,5):
+    temp = pd.concat((temp, X_train[(X_train['Neighborhood']) ==topfive[i]]))
+    #temp2.append(X_train[(X_train['Neighborhood']) ==bottomfive[i]])
+print (temp2)
+DataFrame.as_matrix(temp2).to_csv("temp2.csv")
+#np.unique(temp['Neighborhood'])
+
+
+#sb.boxplot(x=train.Neighborhood[train['Neighborhood']=neighborhoods[topthree]], y=train.SalePrice)
+
+
