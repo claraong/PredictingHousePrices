@@ -55,3 +55,37 @@ DataFrame.as_matrix(temp2).to_csv("temp2.csv")
 #sb.boxplot(x=train.Neighborhood[train['Neighborhood']=neighborhoods[topthree]], y=train.SalePrice)
 
 
+
+# normality probability plot
+plt.subplot(121)
+stats.probplot(residuals_train, dist="norm",plot=plt)
+plt.subplot(122)
+stats.probplot(residuals_val, dist="norm", plot=plt)
+plt.show()
+
+
+print (temp_train['SaleType'].unique())
+print (temp_train['SaleCondition'].unique())
+temp_train = temp_train.replace({"SaleType" : {'WD' : 'Others', 'CWD':'Others', 'VWD':'Others', 'COD':'Others', 
+                                              'Con':'Others', 'ConLw':'Others', 'ConLI':'Others', 'ConLD':'Others', 'Oth':'Others'},
+                       "SaleCondition" : {'Normal': 'Others', 'Abnorml':'Others', 'AdjLand':'Others', 'Alloca':'Others',
+                                         'Family':'Others'}
+                      })
+
+print (temp_train['SaleType'].unique())
+print (temp_train['SaleCondition'].unique())
+
+sb.barplot(x=temp_train.SaleType, y=temp_train.LogPrice, hue=temp_train.SaleCondition);
+
+#from statsmodels.graphics.mosaicplot import mosaic
+#mosaic(temp_train.SalePrice, ['SaleType', 'SaleCondition'])
+
+
+
+# find variables which have larget correlation with y variable
+
+corr = X_train.corr()
+corr.sort_values(["SalePrice"], ascending = False, inplace = True)
+print(corr.SalePrice)
+
+

@@ -8,15 +8,16 @@ Analysis conducted:
 - Residual analysis for Ordinary Least Squares
 
 Linear models used:
-- Data cleaning and visualization
-- Residual analysis for Ordinary Least Squares
+- Ordinary Least Squares regression
+- Ridge regression
+- LASSO regression
 
 Methods to explore in future:
-- Ordinary least squares (Unregularized linear regression)
-- Ridge regression
-- LASSO regression for feature selection
+- Same linear models, but with some prior feature selection
+- Generalized low rank models (eg PCA)
+
 
 Note:
-- Descipription of features (provided by organizer) has been provided in `More data descriptions.doc` in the `Data` folder 
+- Description of features (provided by organizer) has been provided in `More data descriptions.doc` in the `Data` folder 
 - Partial credits for data processing and linear models go to: Alexandru Papiu and juliencs.
 - Feedback are most welcome! Thank you.
